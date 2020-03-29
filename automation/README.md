@@ -1,5 +1,7 @@
 # How to use `Owohaxlul.py`
 
+1. Run `pip install -r requirements.txt` to install necessary packages
+
 1. Uncomment `line 11`, run the program,  and place mouse where the
 discord text box is
 
