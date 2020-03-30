@@ -8,6 +8,8 @@ def getMousePosition():
         time.sleep(1)
         print(pag.position())
 
+# getMousePosition()
+
 position = (-1498, 784)
 hax = owoHax(position)
 hax.loopHax()
