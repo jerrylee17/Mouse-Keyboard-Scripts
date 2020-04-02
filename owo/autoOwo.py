@@ -29,10 +29,9 @@ class owoHax:
             self.timer(wait)
 
     def timer(self, wait):
-        for i in range(wait,0,-1):
+        for i in range(wait, 0, -1):
             sys.stdout.write("\r")
             sys.stdout.write("{:2d} seconds remaining.".format(i))
             sys.stdout.flush()
             time.sleep(1)
         sys.stdout.write("\r")
-

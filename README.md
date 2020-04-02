@@ -1,5 +1,8 @@
 # Mouse Keyboard Scripts
 
-I made these scripts with the purpose of learning how to control my 
-mouse and keyboard or pulling data from it. 
+I made these scripts with the purpose of learning how to use different
+python libraries to enhance my coding skills. Some libraries that
+I use in this repository are:
 
+- PyAutoGUI
+- threading

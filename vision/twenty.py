@@ -39,5 +39,5 @@ def executeSound(rings=10):
     executeThreads(threads, 3)
 
 
-timer(1)
+timer()
 executeSound()
