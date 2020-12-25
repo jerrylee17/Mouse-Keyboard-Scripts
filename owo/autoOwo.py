@@ -15,6 +15,7 @@ class owoHax:
         pag.click(self.position)
         pag.typewrite("owoh")
         pag.typewrite(["enter"])
+        time.sleep(1)
         pag.typewrite("owob")
         pag.typewrite(["enter"])
         pag.moveTo(currpos)

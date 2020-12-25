@@ -13,6 +13,6 @@ def getMousePosition():
 
 # getMousePosition()
 
-position = (832, 1049)
+position = (2595, 1042)
 hax = owoHax(position)
 hax.loopHax()

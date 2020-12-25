@@ -36,7 +36,7 @@ def executeThreads(threads, wait=3):
 
 def executeSound(rings=10):
     threads = spawnThread(rings)
-    executeThreads(threads, 3)
+    executeThreads(threads, 0.5)
 
 
 timer()

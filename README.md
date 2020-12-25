@@ -6,3 +6,6 @@ I use in this repository are:
 
 - PyAutoGUI
 - threading
+- random
+- sys
+- time
