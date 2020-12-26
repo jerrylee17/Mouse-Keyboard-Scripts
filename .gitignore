@@ -2,5 +2,7 @@
 .vscode/
 
 # Pycache
-owo/__pycache__
+__pycache__
 
+# environment variables
+.env
