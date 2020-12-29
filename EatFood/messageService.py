@@ -1,14 +1,15 @@
-import os
 from twilio.rest import Client
 
 
 class messageService:
-    def __init__(self, account_sid, auth_token, phone_number, user_phone_number):
+    def __init__(
+            self, account_sid, auth_token, phone_number, user_phone_number):
         self.account_sid = account_sid
         self.auth_token = auth_token
         self.phone_number = phone_number
         self.user_phone_number = user_phone_number
         self.client = Client(account_sid, auth_token)
+        self.messages = []
 
     # Costs $0.0075
     def sendMealReminder(self, time: int):
@@ -24,6 +25,7 @@ class messageService:
                 from_=self.phone_number,
                 to=self.user_phone_number
             )
+            self.messages.append(message)
             print(f'Sent to {self.user_phone_number}: {messageBody}')
         except Exception as e:
             print('Error occured: ')

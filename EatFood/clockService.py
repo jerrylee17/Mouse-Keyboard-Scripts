@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 import time
-from threading import Timer
 
 
 class clockService:
@@ -11,7 +10,7 @@ class clockService:
         self.times = self.generateTimes()
 
     def generateTimes(self):
-        # UTC Breakfast, lunch, dinner
+        # Breakfast, lunch, dinner
         return [
             [7, 0, 0],
             [11, 0, 0],
@@ -21,10 +20,10 @@ class clockService:
     def sleep(self, day=None, hour=None, minute=None, second=None):
         t1 = datetime.utcnow() + timedelta(hours=self.timezoneOffset)
         t2 = (t1 + timedelta(hours=self.timezoneOffset)).replace(
-            day=day if day != None else t1.day,
-            hour=hour if hour != None else t1.hour,
-            minute=minute if minute != None else t1.minute,
-            second=second if second != None else t1.second
+            day=day if day is not None else t1.day,
+            hour=hour if hour is not None else t1.hour,
+            minute=minute if minute is not None else t1.minute,
+            second=second if second is not None else t1.second
         )
         delta_t = t2 - t1
         if delta_t.total_seconds() < 0:
@@ -51,3 +50,12 @@ class clockService:
                 second=0
             )
             print(f'Starting new day: {nextDay}')
+
+    def setBreakfast(self, time=(7, 0, 0)):
+        self.times[0] = list(time)
+
+    def setLunch(self, time=(11, 0, 0)):
+        self.times[1] = list(time)
+
+    def setDinner(self, time=(17, 0, 0)):
+        self.times[2] = list(time)

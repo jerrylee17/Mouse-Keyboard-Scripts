@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-from twilio.rest import Client
-from messageService import messageService
-from clockService import clockService
+from EatFood.messageService import messageService
+from EatFood.clockService import clockService
+from EatFood.interfaceManager import interfaceManager
 
 # Load environment variables
 load_dotenv(os.path.join('./', '.env'))
@@ -11,13 +11,24 @@ load_dotenv(os.path.join('./', '.env'))
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 phone_number = os.getenv('TWILIO_PHONE_NUMBER')
-user_phone_number = '+14085136711'
 
 
-messageService = messageService(
-    account_sid, auth_token, phone_number, user_phone_number
-)
-clockService = clockService(-8)
-clockService.waitForMeal(
-    callback=messageService.sendMealReminder
-)
+def subscribeUser():
+    """Subscribe a user to the messaging service"""
+    # Get user information
+    cli_interface = interfaceManager()
+    answers = cli_interface.getUserInfo()
+    user_phone_number = answers['phone_number']
+    time_zone = answers['time_zone']
+    # SMS messaging service
+    message_service = messageService(
+        account_sid, auth_token, phone_number, user_phone_number
+    )
+    # Periodic checking service
+    clock_service = clockService(time_zone)
+    clock_service.waitForMeal(
+        callback=message_service.sendMealReminder
+    )
+
+
+subscribeUser()
