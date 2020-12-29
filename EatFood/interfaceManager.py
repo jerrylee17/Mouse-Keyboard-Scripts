@@ -62,8 +62,3 @@ class interfaceManager:
         ext = groups[0] or '1'
         number = '+' + ext + ''.join(groups[1:])
         return number
-
-
-interface = interfaceManager()
-answers = interface.getUserInfo()
-print(answers)

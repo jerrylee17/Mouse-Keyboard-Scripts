@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-from EatFood.messageService import messageService
-from EatFood.clockService import clockService
-from EatFood.interfaceManager import interfaceManager
+from messageService import messageService
+from clockService import clockService
+from interfaceManager import interfaceManager
 
 # Load environment variables
 load_dotenv(os.path.join('./', '.env'))
