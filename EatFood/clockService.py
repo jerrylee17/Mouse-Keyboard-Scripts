@@ -17,9 +17,13 @@ class clockService:
             [17, 0, 0]
         ]
 
-    def sleep(self, day=None, hour=None, minute=None, second=None):
+    def sleep(self, year=None, month=None, day=None, hour=None, minute=None, second=None):
+        # t1 = current time
         t1 = datetime.utcnow() + timedelta(hours=self.timezoneOffset)
+        # t2 = target time
         t2 = (t1 + timedelta(hours=self.timezoneOffset)).replace(
+            year=year if year is not None else t1.year,
+            month=month if month is not None else t1.month,
             day=day if day is not None else t1.day,
             hour=hour if hour is not None else t1.hour,
             minute=minute if minute is not None else t1.minute,
@@ -34,7 +38,7 @@ class clockService:
     def waitForMeal(self, callback):
         # Loop for automated texting
         # Setting this at 10 days for now
-        for i in range(10):
+        for i in range(1):
             # Daily notifications
             for i, e in enumerate(self.times):
                 if (self.sleep(hour=e[0], minute=e[1], second=e[2]) == -1):
@@ -43,8 +47,12 @@ class clockService:
 
             # Reset timer at end of day
             nextDay = datetime.utcnow() + timedelta(hours=self.timezoneOffset)
+            nextDay += timedelta(days=1)
+            nextDay = nextDay.replace(hour=0, minute=0, second=0)
             self.sleep(
-                day=nextDay.day + 1,
+                year=nextDay.year,
+                month=nextDay.month,
+                day=nextDay.day,
                 hour=0,
                 minute=0,
                 second=0
