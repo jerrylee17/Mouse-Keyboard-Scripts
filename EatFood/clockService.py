@@ -38,7 +38,7 @@ class clockService:
     def waitForMeal(self, callback):
         # Loop for automated texting
         # Setting this at 10 days for now
-        for i in range(1):
+        for i in range(10):
             # Daily notifications
             for i, e in enumerate(self.times):
                 if (self.sleep(hour=e[0], minute=e[1], second=e[2]) == -1):
