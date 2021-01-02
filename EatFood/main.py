@@ -27,8 +27,7 @@ def subscribeUser():
     # Periodic checking service
     clock_service = clockService(time_zone)
     clock_service.waitForMeal(
-        # callback=message_service.sendMealReminder
-        callback=lambda x: print(x)
+        callback=message_service.sendMealReminder
     )
 
 
